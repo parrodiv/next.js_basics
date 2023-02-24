@@ -26,7 +26,8 @@ export async function getStaticProps() {
   )
   const data = await response.json()
 
-  // await sleep(5000)
+  await sleep(5000)
+  //in production mode this sleep is not reached because data are static, they are not rerendered every time as with getServerSideProps
 
   return {
     props: {
