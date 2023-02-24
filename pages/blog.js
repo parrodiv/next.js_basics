@@ -1,3 +1,4 @@
+import sleep from 'await-sleep'
 import Link from 'next/link'
 
 export default function Blog(props) {
@@ -24,6 +25,8 @@ export async function getStaticProps() {
     'https://learnwebcode.github.io/json-example/posts.json'
   )
   const data = await response.json()
+
+  // await sleep(5000)
 
   return {
     props: {
