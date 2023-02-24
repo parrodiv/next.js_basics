@@ -1,13 +1,28 @@
-import Link from 'next/link'
-
-export default function About() {
+export default function About(props) {
   return (
     <>
-      <h1>About Page</h1>
+      <h2>About Us</h2>
       <p>
-       This is the about page
+        Welcome to this amazing about page. Lorem ipsum dolor, sit amet
+        consectetur adipisicing elit. Porro dolore officiis atque voluptas,
+        quas, repellendus cum, magnam a alias unde reiciendis voluptates aliquam
+        maxime laborum? Quae omnis eius impedit et?
       </p>
-      <Link href="/"> Back to homepage</Link>
+      <p>I have {props.repoCount} public repos on GitHub.</p>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const response = await fetch('https://api.github.com/users/parrodiv')
+  const data = await response.json()
+
+  return {
+    props: {
+      repoCount: data.public_repos,
+    },
+    revalidate: 10
+
+    // revalidate 10 means that every 10 seconds next fetch data from the API and when refreshing page, so when the request is made, the data will be updated
+  }
 }
