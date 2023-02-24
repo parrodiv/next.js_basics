@@ -25,6 +25,14 @@ const App = ({Component, pageProps}) => {
                 About
               </Link>
             </li>
+            <li>
+              <Link
+                className={router.pathname == '/blog' ? 'active' : ''}
+                href='/blog'
+              >
+                Blog
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
